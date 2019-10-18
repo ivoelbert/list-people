@@ -1,0 +1,48 @@
+.person-item-container {
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+        width: 50%;
+    }
+}
+
+.person-item-link {
+    margin: 1em;
+    height: 60px;
+    border-radius: 9999px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    text-decoration: none;
+
+    &:hover.light, &:focus.light {
+        border: solid 1px #c0c0c0;
+        background-color: #eaeaea;
+        outline: none;
+    }
+
+    &:hover.dark, &:focus.dark {
+        border: solid 1px #636363;
+        background-color: #353535;
+        outline: none;
+    }
+
+    img {
+        height: 100%;
+        border-radius: 9999px;
+    }
+
+    .person-name {
+        text-decoration: none;
+        margin-left: 1em;
+
+        &.light {
+            color: #2b2b2b;
+        }
+
+        &.dark {
+            color: #f4f4f4;
+        }
+    }
+}

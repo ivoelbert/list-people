@@ -1,0 +1,40 @@
+.modal-backdrop {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+
+    &.light,
+    &.dark {
+        background-color: #2b2b2b20;
+    }
+}
+
+.details-modal {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    transition: transform 350ms;
+
+    &.light {
+        background-color: #f4f4f4;
+        color: #2b2b2b;
+    }
+
+    &.dark {
+        background-color: #2b2b2b;
+        color: #f4f4f4;
+    }
+
+    &.open {
+        transform: translateX(0);
+    }
+
+    &.closed {
+        transform: translateX(100%);
+    }
+}
