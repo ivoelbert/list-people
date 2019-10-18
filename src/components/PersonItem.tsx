@@ -29,7 +29,7 @@ export const PersonItem: React.FC<Props> = (props: Props) => {
                 className={themed('person-item-link')}
             >
                 <img
-                    src={picture.thumbnail}
+                    src={picture.medium}
                     alt={`${firstName} ${lastName} thumbnail`}
                 />
                 <span className={themed('person-name')}>

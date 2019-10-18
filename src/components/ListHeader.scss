@@ -1,0 +1,35 @@
+.list-header-container {
+    width: 100%;
+    margin: 0 1em;
+
+    .title-and-theme {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .list-title {
+        margin: 16px 0;
+
+        &.light {
+            color: #2b2b2b;
+        }
+
+        &.dark {
+            color: #f4f4f4;
+        }
+    }
+
+    .list-description {
+        margin: 0;
+        margin-bottom: 16px;
+
+        &.light {
+            color: #505050;
+        }
+
+        &.dark {
+            color: #bbbbbb;
+        }
+    }
+}

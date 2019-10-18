@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Person } from '../models/people';
 import { useTheme } from '../hooks/useTheme';
 
-import './DetailsModel.scss';
+import './DetailsModal.scss';
+import { useKeyboardEvent } from '../hooks/useKeyboardEvent';
 
 interface Props {
     selectedPerson: Person | null;
@@ -19,7 +20,18 @@ export const DetailsModel: React.FC<Props> = props => {
 
     const toggleAndClean = () => {
         toggleModal(null);
-    }
+    };
+
+    // Close modal when we press 'Escape'
+    const keyHandler = useCallback(
+        (e: KeyboardEvent) => {
+            if (isOpen) {
+                toggleAndClean();
+            }
+        },
+        [isOpen, toggleModal]
+    );
+    useKeyboardEvent({ Escape: keyHandler });
 
     return (
         <>

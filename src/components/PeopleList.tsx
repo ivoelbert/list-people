@@ -3,7 +3,7 @@ import { usePeople } from '../hooks/usePeople';
 import { Person } from '../models/people';
 import { PersonItem } from './PersonItem';
 import { useTheme } from '../hooks/useTheme';
-import { DetailsModel } from './DetailsModel';
+import { DetailsModel } from './DetailsModal';
 import { useToggledState } from '../hooks/useToggledState';
 import { ListHeader } from './ListHeader';
 
