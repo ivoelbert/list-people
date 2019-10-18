@@ -1,4 +1,4 @@
-import React, { useState, InputHTMLAttributes } from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
 
 import './SearchInput.scss';
