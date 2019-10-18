@@ -1,6 +1,6 @@
 import React from 'react';
-import { Person } from '../models/people';
-import { useTheme } from '../hooks/useTheme';
+import { Person } from '../../models/people';
+import { useTheme } from '../../hooks/useTheme';
 
 import './PersonItem.scss';
 

@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
-import { Person } from '../models/people';
-import { useTheme } from '../hooks/useTheme';
+import { Person } from '../../models/people';
+import { useTheme } from '../../hooks/useTheme';
+import { useKeyboardEvent } from '../../hooks/useKeyboardEvent';
 
 import './DetailsModal.scss';
-import { useKeyboardEvent } from '../hooks/useKeyboardEvent';
 
 interface Props {
     selectedPerson: Person | null;

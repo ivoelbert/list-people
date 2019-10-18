@@ -1,7 +1,7 @@
 import React from 'react';
-import { useTheme } from '../hooks/useTheme';
-import { ToggleButton } from './ToggleButton';
-import { SearchInput } from './SearchInput';
+import { useTheme } from '../../hooks/useTheme';
+import { ToggleButton } from '../ToggleButton/ToggleButton';
+import { SearchInput } from '../SearchInput/SearchInput';
 
 import './ListHeader.scss';
 

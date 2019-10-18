@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { usePeople } from '../hooks/usePeople';
-import { Person } from '../models/people';
-import { PersonItem } from './PersonItem';
-import { useTheme } from '../hooks/useTheme';
-import { DetailsModel } from './DetailsModal';
-import { useToggledState } from '../hooks/useToggledState';
-import { ListHeader } from './ListHeader';
+import { usePeople } from '../../hooks/usePeople';
+import { Person } from '../../models/people';
+import { PersonItem } from '../PersonItem/PersonItem';
+import { useTheme } from '../../hooks/useTheme';
+import { DetailsModel } from '../DetailsModal/DetailsModal';
+import { useToggledState } from '../../hooks/useToggledState';
+import { ListHeader } from '../ListHeader/ListHeader';
 
 import './PeopleList.scss';
 
