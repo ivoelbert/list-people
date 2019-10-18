@@ -1,0 +1,31 @@
+
+.dark, .light {
+    transition: all 200ms;
+}
+
+*::-webkit-scrollbar {
+    width: 2px;
+}
+
+.app-container {
+    width: 100vw;
+    height: 100vh;
+
+    &.light {
+        background-color: #f4f4f4;
+        color: #2b2b2b;
+
+        & *::-webkit-scrollbar-thumb {
+            background-color: #2b2b2b;
+        }
+    }
+
+    &.dark {
+        background-color: #2b2b2b;
+        color: #f4f4f4;
+
+        & *::-webkit-scrollbar-thumb {
+            background-color: #f4f4f4;
+        }
+    }
+}
