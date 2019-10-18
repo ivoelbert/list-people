@@ -28,12 +28,21 @@
     transition: 200ms;
 }
 
-.slider .theme-icon * {
-    fill: #505050;
+.slider .light-theme-icon {
+    position: absolute;
+    transform: translateX(21px);
+
+    path {
+        fill: #505050;
+    }
 }
 
-.slider .theme-icon {
-    transform: translateX(21px);
+.slider .dark-theme-icon {
+    transform: translateX(3px);
+
+    path {
+        fill: #1b1b1b;
+    }
 }
 
 .slider .icon-background {

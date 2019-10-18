@@ -26,7 +26,7 @@ export const DetailsModel: React.FC<Props> = props => {
     const keyHandler = useCallback(
         (e: KeyboardEvent) => {
             if (isOpen) {
-                toggleAndClean();
+                toggleModal(null);
             }
         },
         [isOpen, toggleModal]
