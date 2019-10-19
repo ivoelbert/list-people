@@ -12,7 +12,7 @@
 }
 
 .details-modal {
-    position: fixed;
+    position: fixed!important; /* We need important cause Pose sets 'absolute' inline :( */
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;

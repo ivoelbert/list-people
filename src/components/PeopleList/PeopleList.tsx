@@ -31,7 +31,7 @@ export const PeopleList: React.FC<{}> = props => {
 
     const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
     const [isOpen, toggleModal] = useToggledState(false);
-    const toggleModalWithData = (person: Person | null) => {
+    const toggleModalWithData = (person: Person) => {
         setSelectedPerson(person);
         toggleModal();
     };
@@ -51,7 +51,10 @@ export const PeopleList: React.FC<{}> = props => {
 
                 <PoseGroup>
                     {people.length > 0 && (
-                        <PeopleContainer className='animated-people-container' key="container">
+                        <PeopleContainer
+                            className="animated-people-container"
+                            key="container"
+                        >
                             {people.map((person: Person) => {
                                 return (
                                     <PersonItem
@@ -66,11 +69,13 @@ export const PeopleList: React.FC<{}> = props => {
                 </PoseGroup>
             </div>
 
-            <DetailsModel
-                isOpen={isOpen}
-                toggleModal={toggleModalWithData}
-                selectedPerson={selectedPerson}
-            />
+            {!!selectedPerson && (
+                <DetailsModel
+                    isOpen={isOpen}
+                    toggleModal={toggleModal}
+                    selectedPerson={selectedPerson}
+                />
+            )}
         </>
     );
 };

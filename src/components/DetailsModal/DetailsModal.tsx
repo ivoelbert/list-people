@@ -10,11 +10,11 @@ import { DisplayPerson } from './DisplayPerson';
 const Modal = posed.div({
     enter: {
         x: '0vw',
-        transition: { duration: 150 },
+        transition: { duration: 250 },
     },
     exit: {
         x: '100vw',
-        transition: { duration: 150 },
+        transition: { duration: 250 },
     },
 });
 
@@ -24,9 +24,9 @@ const Shade = posed.div({
 });
 
 interface Props {
-    selectedPerson: Person | null;
+    selectedPerson: Person;
     isOpen: boolean;
-    toggleModal: (person: Person | null) => void;
+    toggleModal: () => void;
 }
 
 export const DetailsModel: React.FC<Props> = props => {
@@ -35,14 +35,14 @@ export const DetailsModel: React.FC<Props> = props => {
     const { themed } = useTheme();
 
     const closeModal = () => {
-        toggleModal(null);
+        toggleModal();
     };
 
     // Close modal when we press 'Escape'
     const keyHandler = useCallback(
         (e: KeyboardEvent) => {
             if (isOpen) {
-                toggleModal(null);
+                toggleModal();
             }
         },
         [isOpen, toggleModal]
