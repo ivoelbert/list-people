@@ -16,13 +16,32 @@
     box-sizing: border-box;
     text-decoration: none;
 
-    &:hover.light, &:focus.light {
+    @media screen and (min-width: 768px) {
+        width: 75%;
+    }
+
+    &:hover.light {
+        @media screen and (min-width: 768px) {
+            border: solid 1px #c0c0c0;
+            background-color: #eaeaea;
+            outline: none;
+        }
+    }
+    &:focus.light {
         border: solid 1px #c0c0c0;
         background-color: #eaeaea;
         outline: none;
     }
 
-    &:hover.dark, &:focus.dark {
+    &:hover.dark {
+        @media screen and (min-width: 768px) {
+            border: solid 1px #636363;
+            background-color: #353535;
+            outline: none;
+        }
+    }
+
+    &:focus.dark {
         border: solid 1px #636363;
         background-color: #353535;
         outline: none;

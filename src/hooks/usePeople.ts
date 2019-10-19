@@ -11,6 +11,13 @@ interface PeopleFetch {
     error: string | null,
 }
 
+const comparePeople = (p1: Person, p2: Person): number => {
+    const p1FullName = `${p1.name.first} ${p1.name.last}`;
+    const p2FullName = `${p2.name.first} ${p2.name.last}`;
+
+    return p1FullName.localeCompare(p2FullName);
+}
+
 export const usePeople = (): PeopleFetch => {
     const [people, setPeople] = useState<Person[]>([]);
     const [fetching, setFetching] = useState<boolean>(true);
@@ -21,7 +28,7 @@ export const usePeople = (): PeopleFetch => {
             const { data } = await axios.get<APIResult>(ENDPOINT);
 
             setFetching(false);
-            setPeople(data.results);
+            setPeople(data.results.sort(comparePeople));
         } catch (err) {
             setFetching(false);
             setError(`Network Error`);

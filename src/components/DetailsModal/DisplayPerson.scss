@@ -1,0 +1,93 @@
+
+.person-info-container {
+    width: 100%;
+    padding: 0 1.5em;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+
+    .info-piece {
+        margin-top: 1em;
+        padding-top: 0.5em;
+    }
+
+    .icon-and-heading {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.25em;
+    }
+
+    h3 {
+        font-size: 14px;
+        font-weight: 100;
+        margin-left: 0.5em;
+    }
+
+    p,
+    a {
+        font-size: 18px;
+        text-decoration: none;
+        margin: 0;
+        position: relative;
+    }
+
+    a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+    }
+
+    &.light {
+        .icon-and-heading path {
+            fill: #5a5a5a;
+        }
+
+        h3 {
+            color: #5a5a5a;
+        }
+
+        p,
+        a {
+            color: #3b3b3b;
+        }
+
+        a::after {
+            background-color: #d0d0d0;
+        }
+
+        .info-piece {
+            border-top: solid 1px #dadada;
+            &:first-of-type {
+                border-top: none;
+            }
+        }
+    }
+
+    &.dark {
+        .icon-and-heading path {
+            fill: #808080;
+        }
+
+        h3 {
+            color: #808080;
+        }
+
+        p,
+        a {
+            color: #dadada;
+        }
+
+        a::after {
+            background-color: #808080;
+        }
+
+        .info-piece {
+            border-top: solid 1px #505050;
+            &:first-of-type {
+                border-top: none;
+            }
+        }
+    }
+}

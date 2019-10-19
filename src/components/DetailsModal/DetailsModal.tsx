@@ -5,6 +5,7 @@ import { useKeyboardEvent } from '../../hooks/useKeyboardEvent';
 import posed, { PoseGroup } from 'react-pose';
 
 import './DetailsModal.scss';
+import { DisplayPerson } from './DisplayPerson';
 
 const Modal = posed.div({
     enter: {
@@ -29,11 +30,11 @@ interface Props {
 }
 
 export const DetailsModel: React.FC<Props> = props => {
-    const { isOpen, toggleModal } = props;
+    const { isOpen, toggleModal, selectedPerson } = props;
 
     const { themed } = useTheme();
 
-    const toggleAndClean = () => {
+    const closeModal = () => {
         toggleModal(null);
     };
 
@@ -51,11 +52,12 @@ export const DetailsModel: React.FC<Props> = props => {
     return (
         <PoseGroup animateOnMount={true}>
             {isOpen && [
-                <Shade key='backdrop' className={themed('modal-backdrop')} />,
+                <Shade key="backdrop" className={themed('modal-backdrop')} />,
 
-                <Modal key='modal' className={themed('details-modal')}>
-                    <p>MODALSITOOO</p>
-                    <button onClick={toggleAndClean}>close</button>
+                <Modal key="modal" className={themed('details-modal')}>
+                    {selectedPerson && (
+                        <DisplayPerson closeModal={closeModal} person={selectedPerson} />
+                    )}
                 </Modal>,
             ]}
         </PoseGroup>
