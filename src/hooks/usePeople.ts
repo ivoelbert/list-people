@@ -3,7 +3,7 @@ import { Person, APIResult } from '../models/people';
 import axios from 'axios';
 
 const ENDPOINT: string =
-    'https://randomuser.me/api/?seed=findpeople&results=100';
+    'https://randomuser.me/api/?seed=peoplefinder&results=100';
 
 interface PeopleFetch {
     people: Person[],
@@ -24,7 +24,7 @@ export const usePeople = (): PeopleFetch => {
             setPeople(data.results);
         } catch (err) {
             setFetching(false);
-            setError('Error getting people info');
+            setError(`Network Error`);
         }
     };
 
