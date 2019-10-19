@@ -14,14 +14,14 @@ import './PeopleList.scss';
 
 const PeopleContainer = posed.div({
     enter: {
-        x: '0vw',
+        y: '0vh',
         opacity: 1,
-        transition: { duration: 150 },
+        transition: { duration: 250 },
     },
     exit: {
-        x: '-100vw',
+        y: '100vh',
         opacity: 0,
-        transition: { duration: 150 },
+        transition: { duration: 250 },
     },
 });
 
