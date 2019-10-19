@@ -1,6 +1,6 @@
 .dark,
 .light {
-    transition: all 200ms;
+    transition: color 200ms, background-color 200ms, fill 200ms, border 200ms;
 }
 
 *::-webkit-scrollbar {
