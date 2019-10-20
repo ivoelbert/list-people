@@ -46,6 +46,7 @@ export const SearchInput: React.FC<Props> = (props) => {
     return (
         <div className={themed('search-input-container')}>
             <input
+                autoFocus={true}
                 placeholder="Search by name or surname"
                 value={searchTerm}
                 onChange={onChange}
