@@ -5,9 +5,12 @@ import { SearchInput } from '../SearchInput/SearchInput';
 
 import './ListHeader.scss';
 
-interface Props {}
+interface Props {
+    searchTerm: string;
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
 
-export const ListHeader: React.FC<Props> = () => {
+export const ListHeader: React.FC<Props> = props => {
     const { themed, toggleTheme, theme } = useTheme();
 
     return (
@@ -22,7 +25,7 @@ export const ListHeader: React.FC<Props> = () => {
             <p className={themed('list-description')}>
                 You can search for someone, no need for a perfect match!
             </p>
-            <SearchInput />
+            <SearchInput {...props} />
         </header>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTheme } from '../../hooks/useTheme';
 
 import './SearchInput.scss';
@@ -25,29 +25,33 @@ const ClearButton: React.FC<ClearProps> = (props) => {
     );
 };
 
-export const SearchInput: React.FC = () => {
-    const { themed } = useTheme();
+interface Props {
+    searchTerm: string;
+    setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+}
 
-    const [query, setQuery] = useState<string>('');
+export const SearchInput: React.FC<Props> = (props) => {
+    const { searchTerm, setSearchTerm } = props;
+    const { themed } = useTheme();
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { value } = e.target;
-        setQuery(value);
+        setSearchTerm(value);
     };
 
     const clearQuery = (): void => {
-        setQuery('');
+        setSearchTerm('');
     }
 
     return (
         <div className={themed('search-input-container')}>
             <input
                 placeholder="Search by name or surname"
-                value={query}
+                value={searchTerm}
                 onChange={onChange}
                 className={themed('search-input')}
             />
-            {query.length > 0 && <ClearButton onClick={clearQuery} />}
+            {searchTerm.length > 0 && <ClearButton onClick={clearQuery} />}
         </div>
     );
 };

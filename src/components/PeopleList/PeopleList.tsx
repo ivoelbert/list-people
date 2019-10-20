@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import posed, { PoseGroup } from 'react-pose';
+import posed from 'react-pose';
 import { usePeople } from '../../hooks/usePeople';
 import { Person } from '../../models/people';
 import { PersonItem } from '../PersonItem/PersonItem';
@@ -9,24 +9,28 @@ import { useToggledState } from '../../hooks/useToggledState';
 import { ListHeader } from '../ListHeader/ListHeader';
 import { Loader } from '../Loader/Loader';
 import { NetworkError } from './NetworkError';
+import { useFuzzySearch } from '../../hooks/useFuzzySearch';
 
 import './PeopleList.scss';
 
 const PeopleContainer = posed.div({
-    enter: {
-        y: '0vh',
+    visible: {
+        y: '0px',
         opacity: 1,
-        transition: { duration: 250 },
+        transition: { duration: 200 },
     },
-    exit: {
-        y: '100vh',
+    hidden: {
+        y: '100px',
         opacity: 0,
-        transition: { duration: 250 },
+        transition: { duration: 200 },
     },
 });
 
 export const PeopleList: React.FC<{}> = props => {
     const { people, fetching, error } = usePeople();
+    const [searchTerm, setSearchTerm] = useState<string>('');
+    const filteredPeople = useFuzzySearch(people, searchTerm);
+
     const { themed } = useTheme();
 
     const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
@@ -39,7 +43,10 @@ export const PeopleList: React.FC<{}> = props => {
     return (
         <>
             <div className={themed('people-list-container')}>
-                <ListHeader />
+                <ListHeader
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                />
 
                 {fetching && (
                     <div className={themed('loader-container')}>
@@ -49,24 +56,20 @@ export const PeopleList: React.FC<{}> = props => {
 
                 {error && <NetworkError message={error} />}
 
-                <PoseGroup>
-                    {people.length > 0 && (
-                        <PeopleContainer
-                            className="animated-people-container"
-                            key="container"
-                        >
-                            {people.map((person: Person) => {
-                                return (
-                                    <PersonItem
-                                        onItemClick={toggleModalWithData}
-                                        person={{ ...person }}
-                                        key={person.login.uuid}
-                                    />
-                                );
-                            })}
-                        </PeopleContainer>
-                    )}
-                </PoseGroup>
+                <PeopleContainer
+                    pose={filteredPeople.length > 0 ? 'visible' : 'hidden'}
+                    className="animated-people-container"
+                >
+                    {filteredPeople.map((person: Person) => {
+                        return (
+                            <PersonItem
+                                onItemClick={toggleModalWithData}
+                                person={{ ...person }}
+                                key={person.login.uuid}
+                            />
+                        );
+                    })}
+                </PeopleContainer>
             </div>
 
             {!!selectedPerson && (
