@@ -2,6 +2,7 @@
     width: 100%;
     max-width: 1024px;
     margin: auto;
+    min-height: 100%;
 
     &.light {
         background-color: #fafafa;
@@ -74,12 +75,5 @@
     display: flex;
     justify-content: center;
     padding-top: 3em;
-
-    &.light {
-        background-color: #eaeaea;
-    }
-
-    &.dark {
-        background-color: #1b1b1b;
-    }
+    background-color: transparent;
 }

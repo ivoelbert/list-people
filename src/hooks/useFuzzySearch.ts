@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Fuse from 'fuse.js';
-import { Person } from '../models/people';
+import { Person, comparePeople, removeDuplicatedPeople } from '../models/people';
 import { useDebounce } from './useDebounce';
 
 const options = {
@@ -19,15 +19,30 @@ export const useFuzzySearch = (people: Person[], term: string): Person[] => {
     );
     const [result, setResult] = useState<Person[]>(people);
 
-    const debouncedTerm: string = useDebounce<string>(term, 200);
+    const debouncedTerm: string = useDebounce<string>(term, 150);
 
     useEffect(() => {
-        console.log('OH NO!');
         setFuse(new Fuse<Person>(people, options));
     }, [people]);
 
     useEffect(() => {
-        setResult(debouncedTerm.length > 0 ? fuse.search(debouncedTerm) : people);
+        const termsToSearch = debouncedTerm
+            .split(/\s/)
+            .filter((term: string) => term.length > 0);
+
+        if (termsToSearch.length === 0) {
+            setResult(people);
+            return;
+        }
+
+        const mergedSearches: Person[] = termsToSearch
+            .map((t: string) => fuse.search(t))
+            .flat()
+            .sort(comparePeople);
+
+        const normalizedResults = removeDuplicatedPeople(mergedSearches);
+
+        setResult(normalizedResults);
     }, [people, fuse, debouncedTerm]);
 
     return result;
