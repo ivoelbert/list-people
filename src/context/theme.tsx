@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocalStorageState } from '../hooks/useLocalStorageState';
 
 export type Theme = 'dark' | 'light';
 
@@ -20,7 +21,10 @@ const voidContext: ThemeContext = {
 export const ThemeContextValue = React.createContext<ThemeContext>(voidContext);
 
 export const ThemeProvider: React.FC = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>('light');
+    const [theme, setTheme] = useLocalStorageState<Theme>(
+        'people-finder-theme',
+        'light'
+    );
 
     const toggleTheme = (): void => {
         setTheme(theme === 'dark' ? 'light' : 'dark');

@@ -6,9 +6,9 @@ const ENDPOINT: string =
     'https://randomuser.me/api/?seed=peoplefinder&results=100';
 
 interface PeopleFetch {
-    people: Person[],
-    fetching: boolean,
-    error: string | null,
+    people: Person[];
+    fetching: boolean;
+    error: string | null;
 }
 
 export const usePeople = (): PeopleFetch => {
@@ -17,6 +17,7 @@ export const usePeople = (): PeopleFetch => {
     const [error, setError] = useState<string | null>(null);
 
     const _fetchData = async (): Promise<void> => {
+        console.log('FETCHING??');
         try {
             const { data } = await axios.get<APIResult>(ENDPOINT);
 
@@ -34,5 +35,5 @@ export const usePeople = (): PeopleFetch => {
         fetchData();
     }, [fetchData]);
 
-    return {people, fetching, error};
+    return { people, fetching, error };
 };
