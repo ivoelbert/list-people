@@ -3,9 +3,10 @@ import { Person } from '../../models/people';
 import { useTheme } from '../../hooks/useTheme';
 import { useKeyboardEvent } from '../../hooks/useKeyboardEvent';
 import posed, { PoseGroup } from 'react-pose';
+import { useSwipeable, EventData, SwipeableHandlers } from 'react-swipeable';
+import { DisplayPerson } from './DisplayPerson';
 
 import './DetailsModal.scss';
-import { DisplayPerson } from './DisplayPerson';
 
 const Modal = posed.div({
     enter: {
@@ -18,7 +19,7 @@ const Modal = posed.div({
     },
 });
 
-const Shade = posed.div({
+const Shade = posed.button({
     enter: { opacity: 1 },
     exit: { opacity: 0 },
 });
@@ -49,14 +50,37 @@ export const DetailsModel: React.FC<Props> = props => {
     );
     useKeyboardEvent({ Escape: keyHandler });
 
+    const swipeHandler = useCallback(
+        (e: EventData) => {
+            if (isOpen) {
+                toggleModal();
+            }
+        },
+        [isOpen, toggleModal]
+    );
+    const handlers: SwipeableHandlers = useSwipeable({
+        onSwipedRight: swipeHandler,
+    });
+
     return (
         <PoseGroup animateOnMount={true}>
             {isOpen && [
-                <Shade key="backdrop" className={themed('modal-backdrop')} />,
+                <Shade
+                    onClick={closeModal}
+                    key="backdrop"
+                    className={themed('modal-backdrop')}
+                />,
 
-                <Modal key="modal" className={themed('details-modal')}>
+                <Modal
+                    {...handlers}
+                    key="modal"
+                    className={themed('details-modal')}
+                >
                     {selectedPerson && (
-                        <DisplayPerson closeModal={closeModal} person={selectedPerson} />
+                        <DisplayPerson
+                            closeModal={closeModal}
+                            person={selectedPerson}
+                        />
                     )}
                 </Modal>,
             ]}

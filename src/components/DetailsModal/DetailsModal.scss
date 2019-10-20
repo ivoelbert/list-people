@@ -4,6 +4,7 @@
     height: 100vh;
     top: 0;
     left: 0;
+    border: none;
 
     &.light,
     &.dark {
@@ -12,7 +13,7 @@
 }
 
 .details-modal {
-    position: fixed!important; /* We need important cause Pose sets 'absolute' inline :( */
+    position: fixed !important; /* We need important cause Pose sets 'absolute' inline :( */
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;

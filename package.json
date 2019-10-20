@@ -15,6 +15,7 @@
     "react-dom": "^16.10.2",
     "react-pose": "^4.0.9",
     "react-scripts": "3.2.0",
+    "react-swipeable": "^5.4.0",
     "typescript": "3.6.4"
   },
   "scripts": {
