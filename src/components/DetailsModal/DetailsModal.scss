@@ -1,5 +1,5 @@
 .modal-backdrop {
-    position: fixed;
+    position: fixed !important; /* We need important cause Pose sets 'absolute' inline :( */
     width: 100vw;
     height: 100vh;
     top: 0;
