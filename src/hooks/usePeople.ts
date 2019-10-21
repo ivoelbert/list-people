@@ -17,7 +17,6 @@ export const usePeople = (): PeopleFetch => {
     const [error, setError] = useState<string | null>(null);
 
     const _fetchData = async (): Promise<void> => {
-        console.log('FETCHING??');
         try {
             const { data } = await axios.get<APIResult>(ENDPOINT);
 
