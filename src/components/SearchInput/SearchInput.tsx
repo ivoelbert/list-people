@@ -51,6 +51,7 @@ export const SearchInput: React.FC<Props> = (props) => {
                 value={searchTerm}
                 onChange={onChange}
                 className={themed('search-input')}
+                maxLength={64}
             />
             {searchTerm.length > 0 && <ClearButton onClick={clearQuery} />}
         </div>
